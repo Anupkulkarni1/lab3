@@ -1,13 +1,12 @@
 package com.example.demo.Controller;
-
-
-        import com.example.demo.model.user;
-        import com.example.demo.model.userRepository;
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.http.HttpStatus;
-        import org.springframework.http.ResponseEntity;
-        import org.springframework.web.bind.annotation.*;
-        import com.example.demo.req.LoginRequest;
+import com.example.demo.model.user;
+import com.example.demo.model.userRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import com.example.demo.req.LoginRequest;
+import com.example.demo.req.SignupRequest;
 
 @RestController
 @RequestMapping("/user")
@@ -18,24 +17,6 @@ public class userController {
     @Autowired
     private userRepository userRepository;
 
-
-//    @PostMapping(value = "/login")
-//    public ResponseEntity<user> userLogin(
-//            @RequestBody LoginRequest loginRequest) {
-//
-//        User user = userRepository.findUserByEmail(loginRequest.getEmail());
-//
-//        logger.info("email: " + loginRequest.getEmail());
-//        logger.info("password: " + loginRequest.getPassword());
-//        logger.info("current user: " + user);
-//
-//        if (!user.isPasswordCorrect(loginRequest.getPassword())) {
-//            throw new UnauthorizedException();
-//        }
-//
-//        return new ResponseEntity<User>(user, HttpStatus.OK);
-//    }
-//    @RequestMapping(method = RequestMethod.POST , value="/login", headers="Accept=application/json")
     @PostMapping(value = "/login")
     public ResponseEntity<user> login(@RequestBody LoginRequest loginRequest)
     {
@@ -44,6 +25,21 @@ public class userController {
         user user = userRepository.findUserByEmail(loginRequest.getEmail());
         return new ResponseEntity<user>(user, HttpStatus.OK);
     }
+
+
+    @PostMapping(value = "/signup")
+    public ResponseEntity<String> signup(@RequestBody user user)
+    {
+
+        //System.out.println(user.getId());
+        System.out.println(user.getFirstName());
+
+        userRepository.save(user);
+
+//        user user = userRepository.findUserByEmail(loginRequest.getEmail());
+        return new ResponseEntity<String>("Sign Up successful", HttpStatus.OK);
+    }
+
 
     @GetMapping(value = "/logout")
     public ResponseEntity<String> userLogout() {
