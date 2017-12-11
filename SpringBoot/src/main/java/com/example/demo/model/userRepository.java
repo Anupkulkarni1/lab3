@@ -13,10 +13,6 @@ public interface userRepository  extends JpaRepository<user, Integer>{
 
     user save(user user);
 
-
-//    userRepository.save(user user);
-
-
 }
 
 

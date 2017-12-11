@@ -31,12 +31,10 @@ public class userController {
     public ResponseEntity<String> signup(@RequestBody user user)
     {
 
-        //System.out.println(user.getId());
         System.out.println(user.getFirstName());
 
         userRepository.save(user);
 
-//        user user = userRepository.findUserByEmail(loginRequest.getEmail());
         return new ResponseEntity<String>("Sign Up successful", HttpStatus.OK);
     }
 
