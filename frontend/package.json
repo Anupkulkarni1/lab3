@@ -1,0 +1,21 @@
+{
+  "name": "NodeExpress",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "test":"mocha"
+  },
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "ejs": "*",
+    "express": "3.4.8",
+    "mysql": "^2.15.0",
+    "multer": "1.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.4",
+    "should": "~7.1.0",
+    "supertest": "~1.1.0"
+  }
+}
