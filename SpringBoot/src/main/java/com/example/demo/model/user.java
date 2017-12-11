@@ -19,6 +19,10 @@ public class user {
     @Column(name = "lastname")
     private String lastname;
 
+    public String getPassword() {
+        return password;
+    }
+
     @Column(name = "password")
     private String password;
 
